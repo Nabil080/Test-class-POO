@@ -12,12 +12,21 @@ if($first==1){$player1 = $playerr1; $player2=$playerr2;}else{$player1 = $playerr
     for($i=$player2->pointDeVie, $x=$player1->pointDeVie; $i>0 AND $x>0; $i=$player2->pointDeVie, $x=$player1->pointDeVie){
     $dodge_p1= rand(0,5);
     $dodge_p2= rand(0,5);
+    $crit_p1= rand(0,10);
+    $crit_p2= rand(0,10);
     $rand = rand(0,5);
+    $player1->dmg = rand($player1->dmg- 2, $player1->dmg + 2);
+    $player2->dmg = rand($player2->dmg- 2, $player2->dmg + 2);
     if($rand==3){$fire=3;}
         echo $player1->name.' attaque '.$player2->name.' !<br>';
     if($dodge_p2!=5){
-        echo $player1->name.' inflige ! <span class="red">'.$player1->dmg.'</span> points de dégats !<br>';
+        if($crit_p1!=5){
+            echo $player1->name.' inflige ! <span class="red">'.$player1->dmg.'</span> points de dégats !<br>';
         $player2->pointDeVie -= $player1->dmg;
+        }else{
+            echo '<span class="text-red-500">COUP CRITIQUE</span> ! '. $player1->name.' inflige ! <span class="red">'.$player1->dmg * 1.5.'</span> points de dégats !<br>';
+            $player2->pointDeVie -= $player1->dmg * 1.5;
+        }
     }else{
         echo $player2->name.' a <span class="green">esquivé</span> le coup !<br>';
     }
@@ -31,8 +40,13 @@ if($first==1){$player1 = $playerr1; $player2=$playerr2;}else{$player1 = $playerr
     if($player2->pointDeVie>0){
         echo $player2->name.' rétorque !<br>';
         if($dodge_p1!=1){
-            echo $player2->name.' inflige ! <span class="red">'.$player2->dmg.'</span> points de dégats !<br>';
-            $player1->pointDeVie -= $player2->dmg;
+            if($crit_p2!=5){
+                echo $player2->name.' inflige ! <span class="red">'.$player2->dmg.'</span> points de dégats !<br>';
+                $player1->pointDeVie -= $player2->dmg;
+            }else{
+                echo '<span class="text-red-500">COUP CRITIQUE</span> ! '.$player2->name.' inflige ! <span class="red">'.$player2->dmg * 1.5 .'</span> points de dégats !<br>';
+                    $player1->pointDeVie -= $player2->dmg * 1.5;
+            }
         }else{
             echo $player1->name.' a <span class="green">esquivé</span> le coup !<br>';
         }
