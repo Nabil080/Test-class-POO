@@ -15,7 +15,6 @@ class FireMage extends Personnage {
         $this->level= $level;
         $this->class= $class;
         $this->skills []= 'dodge';
-        $this->skills []= 'crit';
         $this->skills[]= 'fire';
     }
 }
