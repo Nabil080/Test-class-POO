@@ -4,13 +4,13 @@
  * @param Personnage $playerr1
  * @param Personnage $playyerr2
  */
-function fight($playerr1,$playerr2){
+function fight($player1,$player2){
     // echo'<div class="flex flex-col align-center">';
-$first = rand(0,5);
+$first = rand(0,1);
 $fire = 0;
-if($first==1){$player1 = $playerr1; $player2=$playerr2;}else{$player1 = $playerr2; $player2 = $playerr1;}
+if($first==1){$temp1 = $player1; $player1=$player2; $player2 = $temp1;}
     for($i=$player2->pointDeVie, $x=$player1->pointDeVie; $i>0 AND $x>0; $i=$player2->pointDeVie, $x=$player1->pointDeVie){
-    $dodge_p1= rand(0,5);
+    if(in_array("dodge",$player1->skills)){$dodge_p1= rand(0,5);}
     $dodge_p2= rand(0,5);
     $crit_p1= rand(0,10);
     $crit_p2= rand(0,10);
@@ -30,9 +30,11 @@ if($first==1){$player1 = $playerr1; $player2=$playerr2;}else{$player1 = $playerr
     }else{
         echo $player2->name.' a <span class="green">esquivé</span> le coup !<br>';
     }
-    // if($fire > 0){
-    // echo $player2->name.' brûle ! -'.$fire.'hp ! <br> ';
-    // $fire -= 1;}
+    if(in_array('fire',$player1->skills) && $fire > 0){
+        echo $player2->name.'<span class="text-red-500"> brûle ! -'.$fire.'hp ! </span> <br> ';
+        $player2->pointDeVie -= $fire;
+        $fire -= 1;}
+
     if($player2->pointDeVie > 0){echo $player2->name.' a <span class="green">'.$player2->pointDeVie.'</span> hp restants !<br><br>';}
     elseif($player2->pointDeVie <= 0){echo $player2->name.' est <span class="text-red-500 font-bold"> MORT </span> !<br><br>';}
 
@@ -51,7 +53,9 @@ if($first==1){$player1 = $playerr1; $player2=$playerr2;}else{$player1 = $playerr
             echo $player1->name.' a <span class="green">esquivé</span> le coup !<br>';
         }
             // var_dump($fire);
-        if($fire > 0){
+            // var_dump ($player2->skills);
+            // var_dump ($player1->skills);
+        if(in_array('fire',$player2->skills) && $fire > 0){
             echo $player1->name.'<span class="text-red-500"> brûle ! -'.$fire.'hp ! </span> <br> ';
             $player1->pointDeVie -= $fire;
             $fire -= 1;}

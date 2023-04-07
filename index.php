@@ -28,7 +28,6 @@ var_dump($player2);
 
 <?php
 fight($player1,$player2);
-
 ?>
 
 
