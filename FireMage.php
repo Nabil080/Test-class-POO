@@ -1,10 +1,5 @@
 <?php
-
-// interface FireMage{
-
-
-// }
-
+require_once('FireMage.php');
 class FireMage extends Personnage {
 
     public function __construct($name,$pointDeVie,$dmg,$level,$class)

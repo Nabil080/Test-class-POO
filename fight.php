@@ -1,8 +1,8 @@
 <?php
 /**
  * La fonction fight prends en paramètres les deux joueurs qui doivent se battrent
- * @param Personnage $playerr1
- * @param Personnage $playyerr2
+ * @param Personnage $player1
+ * @param Personnage $player2
  */
 function fight($player1,$player2){
     // echo'<div class="flex flex-col align-center">';
@@ -60,8 +60,14 @@ if($first==1){$temp1 = $player1; $player1=$player2; $player2 = $temp1;}
             $player1->pointDeVie -= $fire;
             $fire -= 1;}
             // var_dump($fire);
-        if($player1->pointDeVie >0){echo $player1->name.' a <span class="green">'.$player1->pointDeVie.'</span> hp restants !<br><br>';}
-        elseif($player1->pointDeVie <= 0){echo $player1->name.' est <span class="text-red-500 font-bold"> MORT </span> !<br><br>';}
+        if($player1->pointDeVie >0)
+        {
+            echo $player1->name.' a <span class="green">'.$player1->pointDeVie.'</span> hp restants !<br><br>';
+        }
+        elseif($player1->pointDeVie <= 0)
+        {
+            echo $player1->name.' est <span class="text-red-500 font-bold"> MORT </span> !<br><br>';
+        }
     }
     echo '------------------------------------------<br><br>';
 

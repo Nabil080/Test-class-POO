@@ -1,5 +1,6 @@
 <?php
 require_once('FireMage.php');
+require_once('Rogue.php');
 // Créer la classe "Personnage"
 class Personnage
 // implements FireMage
