@@ -12,15 +12,15 @@ $_SESSION['player1'] = $player1;
 $player2 = new FireMage ('Ziad',100,10,1,"FireMage");
 $_SESSION['player2'] = $player2;
 // var_dump($_SESSION);
-var_dump($player1);
-var_dump($player2);
+// var_dump($player1);
+// var_dump($player2);
 ?>
 
 <div class="flex gap-10 mb-4 justify-center">
-    <div class="border p-4 h-fit">
+    <div class="fixed border p-4 h-fit right-36">
     <?php $player1->toString();?>
     </div>
-    <div class="border p-4 h-fit">
+    <div class="fixed border p-4 h-fit left-36">
     <?php $player2->toString();?>
     </div>
 </div>
