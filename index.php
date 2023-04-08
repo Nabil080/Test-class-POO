@@ -7,9 +7,9 @@ require_once('fight.php');
 // if(!isset($player2_level)){
 //     $player2_level = 1;
 // }
-$player1 = new Personnage('Nabil',50,20,1,"Fermier");
+$player1 = new Personnage('Naruto',50,20,1,"Fermier");
 $_SESSION['player1'] = $player1;
-$player2 = new FireMage ('Ziad',100,10,1,"FireMage");
+$player2 = new FireMage ('Sasuke',100,10,1,"FireMage");
 $_SESSION['player2'] = $player2;
 // var_dump($_SESSION);
 // var_dump($player1);
@@ -27,7 +27,13 @@ $_SESSION['player2'] = $player2;
 
 
 <?php
-fight($player1,$player2);
+// fight($player1,$player2);
+
+$player1->engage($player2);
+$player2->takes($player1);
+$player2->attack($player1);
+$player1->takes($player2);
+
 ?>
 
 

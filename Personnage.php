@@ -38,5 +38,25 @@ class Personnage
         }
     }
 
+    public function engage($player)
+    {
+        echo '<span class="text-red-500">!!</span> '.$this->name.' engage le combat contre '.$player->name.' <span class="text-red-500">!!</span><br>';
+        echo $this->name.' inflige ! <span class="red">'.$this->dmg.'</span> points de dégats !<br>';
+        echo '------------------<br>';
+    }
+
+    public function takes($player)
+    {
+        $this->pointDeVie -= $player->dmg;
+        echo $this->name.' a <span class="green">'.$this->pointDeVie.'</span> hp restants !<br>';
+        echo '------------------<br>';
+    }
+
+    public function attack($player)
+    {
+        echo $this->name.' rétorque !<br>';
+        echo $this->name.' inflige ! <span class="red">'.$this->dmg.'</span> points de dégats !<br>';
+        echo '------------------<br>';
+    }
 }
 ?>
